@@ -6,7 +6,6 @@ melon_names = [
     'Cantaloupe'
 ]
 
-
 melon_prices = {
     'Honeydew': 0.99,
     'Crenshaw': 2.00,
@@ -15,18 +14,34 @@ melon_prices = {
     'Cantaloupe': 0.99,
 }
 
-# melon_seedlessness = {
-#     'Honeydew': True,
-#     'Crenshaw': False,
-#     'Crane': False,
-#     'Casaba': False,
-#     'Cantaloupe': False,
-# }
+melon_seedlessness = {
+    'Honeydew': True,
+    'Crenshaw': False,
+    'Crane': False,
+    'Casaba': False,
+    'Cantaloupe': False,
+}
+
+melon_flesh_color = {
+    'Honeydew': None,
+    'Crenshaw': None,
+    'Crane': None,
+    'Casaba': None,
+    'Cantaloupe': None,
+}
+
+melon_avg_weight = {
+    'Honeydew': None,
+    'Crenshaw': None,
+    'Crane': None,
+    'Casaba': None,
+    'Cantaloupe': None,
+}
 
 # attributes = [
 #     melon_prices, 
 #     melon_seedlessness, 
-#     melon_rind_color, 
+#     melon_flesh_color, 
 #     melon_avg_weight
 # ]
 
@@ -39,23 +54,49 @@ def make_dict_melon_names(melon_names):
 
     return melon_dict
 
+
 def add_melon_price(melon_dict, melon_prices):
 
 
     for melon_name in list(melon_prices.keys()):
-        melon_dict[melon_name]["Melon Price"] = melon_prices[melon_name]
+        melon_dict[melon_name]["Melon_Price"] = melon_prices[melon_name]
         
     return melon_dict
+
 
 def add_melon_seedlessness(melon_dict, melon_seedlessness):
 
 
-    for melon_name in list(melon_prices.keys()):
-        melon_dict[melon_name]["Melon Seedlessness"] = 
+    for melon_name in list(melon_seedlessness.keys()):
+        melon_dict[melon_name]["Melon_Seedlessness"] = \
             melon_seedlessness[melon_name]
         
     return melon_dict
 
-melon_names_dict = make_dict_melon_names(melon_names)
 
-melon_dict = add_melon_price(melon_names_dict, melon_prices)
+def add_melon_flesh_color(melon_dict, melon_flesh_color):
+
+    for melon_name in list(melon_flesh_color.keys()):
+        melon_dict[melon_name]["Melon_Flesh_Color"] = \
+            melon_flesh_color[melon_name]
+
+    return melon_dict
+
+
+def add_melon_weight(melon_dict, melon_avg_weight):
+
+    for melon_name in list(melon_avg_weight.keys()):
+        melon_dict[melon_name]["Melon_Avg_Weight"] = \
+            melon_avg_weight[melon_name]
+
+    return melon_dict   
+
+melon_dict_names = make_dict_melon_names(melon_names)
+
+melon_dict_price = add_melon_price(melon_dict_names, melon_prices)
+
+melon_dict_seedlessness = add_melon_seedlessness(melon_dict_price, melon_seedlessness)
+
+melon_dict_flesh_color = add_melon_flesh_color(melon_dict_seedlessness, melon_flesh_color)
+
+melon_dict = add_melon_weight(melon_dict_flesh_color, melon_avg_weight)
